@@ -6,6 +6,6 @@ class UsersController < ApplicationController
   end
 
   def plans
-    @plans = current_user.planner.plans.all
+    @plans = Plan.pager_created_by_planner(params[:page],12,current_user.planner.id)
   end
 end

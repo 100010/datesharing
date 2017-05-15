@@ -24,5 +24,8 @@ class Plan < ApplicationRecord
 	def self.pager_created(page_id,limit)
 		page(page_id).per(limit).order(created_at: :desc)
 	end
-	
+
+	def self.pager_created_by_planner(page_id,limit,planner_id)
+		page(page_id).per(limit).where(planner_id: planner_id).order(created_at: :desc)
+	end
 end
