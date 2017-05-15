@@ -1,0 +1,58 @@
+
+<h1 class="page-header"><%= @plan.title %></h1>
+
+<p>
+  周辺場所
+  <%= @plan.planner_id %>
+</p>
+<p>
+  画像
+  <%= image_tag @plan.main_image %>
+</p>
+
+<p>
+  時間
+  <%= @plan.start_date.strftime('%Y年%m月%d日 %H時%M分') + '~' +  @plan.end_date.strftime('%Y年%m月%d日 %H時%M分')%>
+</p>
+<p>
+  概要
+  <%= @plan.description %>
+</p>
+
+<p>
+  距離感
+  <%= @plan.start_favorability_rating.to_s + '~' + @plan.end_favorability_rating.to_s %>
+</p>
+
+<%= render partial: 'share/good_form' , locals: {plan_id: @plan.id}%>
+
+<h4 class="page-header">デート詳細</h4>
+
+<% @plan.plan_details.each do |plan_detail| %>
+
+<p>
+  デートスポット
+  <%= plan_detail.name %>
+</p>
+
+<p>
+  場所
+  <%= plan_detail.place %>
+</p>
+
+<p>
+  時間
+  <%= plan_detail.start_time.strftime('%H時%M分') + '~' + plan_detail.end_time.strftime('%H時%M分') %>
+</p>
+
+<p>
+  費用
+  <%= plan_detail.price %>
+</p>
+
+<p>
+  おすすめ情報
+  <%= plan_detail.content %>
+</p>
+
+<% end %>

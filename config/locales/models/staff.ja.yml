@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      staff:
+        name: ユーザ名
+        email: メールアドレス
+        email_confirmation: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        status: 'ステータス'

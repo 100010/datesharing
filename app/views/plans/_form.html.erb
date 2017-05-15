@@ -1,0 +1,127 @@
+<%= form_for @plan , html: {class: 'form-horizontal',multipart: true} do |f| %>
+	<div class="form-group">
+		<div class="col-md-12">
+			<%= f.label :title,'タイトル'%>
+				<%= f.text_field :title , class: 'form-control' %>
+				<% if @plan.errors.any? %>
+					<div class="text-danger">
+						<%= @plan.errors.messages[:title][0] %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-12">
+			<%= f.label :place,'周辺場所'%>
+				<%= f.text_field :place , class: 'form-control' %>
+				<% if @plan.errors.any? %>
+					<div class="text-danger">
+						<%= @plan.errors.messages[:place][0] %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-12">
+			<%= f.label :main_image ,'メイン画像'%>
+
+				<%= f.file_field :main_image %>
+				<% if @plan.errors.any? %>
+					<div class="text-danger">
+						<%= @plan.errors.messages[:main_image][0] %>
+					</div>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-12">
+			<%= f.label :start_date ,'時間'%>
+
+			<%= f.select :start_date,get_time_option() %> ~
+			<%= f.select :end_date,get_time_option() %>
+
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-12">
+			<%= f.label :description ,'概要' %>
+				<%= f.text_area :description , class: 'form-control' ,cols: 10 , rows: 5 ,placeholder: 'デートの大まかな概要を記述してください'%>
+				<% if @plan.errors.any? %>
+					<div class="text-danger">
+						<%= @plan.errors.messages[:description][0] %>
+					</div>
+				<% end %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-12">
+			<%= f.label :start_favorability_rating,'距離感'%>
+				<%= f.select :start_favorability_rating ,favorability_rating_option()%> ~
+				<%= f.select :end_favorability_rating ,favorability_rating_option()%>
+		</div>
+	</div>
+
+	<p class="h4 page-header">
+		デート場所
+	</p>
+
+	<%= f.fields_for :plan_details do |p_d|%>
+
+		<div class="form-group">
+			<div class="col-md-12">
+					<%= p_d.label :name , 'デートスポット' %>
+					<%= p_d.text_field :name ,class: 'form-control'%>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-12">
+					<%= p_d.label :place , '場所' %>
+					<%= p_d.text_field :place ,class: 'form-control'%>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-12">
+					<%= p_d.label :start_time , '時間' %>
+					<%= p_d.select :start_time ,get_time_option() %> ~
+					<%= p_d.select :end_time ,get_time_option() %>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-12">
+				<%= p_d.label :price,'費用'%>
+					<%= p_d.text_field :price , class: 'form-control' %>
+					<% if @plan.errors.any? %>
+						<div class="text-danger">
+							<%= @plan.errors.messages[:price][0] %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-12">
+				<%= p_d.label :content ,'おすすめ情報' %>
+					<%= p_d.text_area :content , class: 'form-control' ,cols: 10 , rows: 5 %>
+			</div>
+		</div>
+
+		<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+				<%= link_to 'キャンセル', user_path(current_user.id),class:'btn btn-default' %>
+				<%= f.submit '下書き保存', class: 'btn btn-warning'%>
+				<%= f.submit class: 'btn btn-success'%>
+			</div>
+		</div>
+	<% end %>
+<%end %>

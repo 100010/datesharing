@@ -1,0 +1,17 @@
+<h1>Home#index</h1>
+
+<h2 class="page-header">新着プラン</h2>
+<% @latest_plans.each do |plan| %>
+  <div class="col-xs-6 col-md-3">
+    <div class="thumbnail">
+      <%= plan.thubnail %>
+      <div class="caption">
+        <h3><%= link_to plan.title  ,plan_path(plan.id)%></h3>
+        <%= plan.description %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<p style="text-align: right;">
+  <%= link_to 'プラン一覧' , plans_path , class: 'btn btn-warning' %>
+</p>

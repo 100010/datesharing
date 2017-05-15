@@ -1,0 +1,26 @@
+<% if user_signed_in? %>
+  <div
+    id="good-provider"
+    data-create-good-url="<%= url_for controller: 'goods' , action: 'create'%>"
+    data-destroy-good-url="<%= url_for controller: 'goods' , action: 'destroy'%>">
+  </div>
+
+  <div class="goods-field">
+    <div
+      class="destroy-good text-danger"
+      data-plan-id="<%= plan_id%>"
+      <%='style= display:none' unless @isGood %>
+    >
+      いいね<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+    </div>
+
+    <div
+      class="create-good"
+      data-plan-id="<%= plan_id%>"
+      <%='style=display:none' if @isGood %>
+    >
+      いいね<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+    </div>
+  </div>
+
+<% end %>

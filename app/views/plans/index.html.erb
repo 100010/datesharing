@@ -1,0 +1,20 @@
+
+<h1>プラン一覧</h1>
+
+ページ:<%= @plans.current_page %> / <%= @plans.num_pages %>
+<%= @plans.total_count %>件中<%= @plans.offset_value %>
+〜<%= @plans.offset_value + @plans.length %>件を表示しています。
+<% @plans.each do |plan| %>
+	<div class="col-xs-6 col-md-3">
+    <div class="thumbnail">
+      <%= plan.thubnail %>
+      <div class="caption">
+        <h3><%= link_to plan.title  ,plan_path(plan.id) %></h3>
+				<%= image_tag plan.main_image.thumb.url if plan.main_image? %>
+        <%= plan.description %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= paginate @plans, :window => 4  %>
