@@ -1,10 +1,13 @@
 
+ページ:<%= @plans.current_page %> / <%= @plans.total_pages %>
+<%= @plans.total_count %>件中<%= @plans.offset_value %>
+〜<%= @plans.offset_value + @plans.length %>件を表示しています。
+
 <% @plans.each do |plan| %>
 <h1 class="page-header"><%= plan.title %></h1>
 
 <p>
   周辺場所
-  <%= plan.planner_id %>
 </p>
 <p>
   画像
@@ -26,3 +29,5 @@
 </p>
 
 <% end %>
+
+<%= paginate @plans, :window => 4  %>
