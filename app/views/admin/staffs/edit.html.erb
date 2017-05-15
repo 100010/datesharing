@@ -1,0 +1,36 @@
+<h1 class="page-header">スタッフ情報</h1>
+
+<ul class="nav nav-tabs" style="margin-bottom: 30px;">
+	<li role="presentation" class="active"><a href="#">詳細</a></li>
+	<li role="presentation"><%= link_to 'パスワード設定' , staff_repassword_path %></li>
+</ul>
+<%= form_for current_staff , html: {class: 'form-horizontal'}  do |f|%>
+  <div class="form-group">
+    <%= f.label :name,class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :name , class: 'form-control' %>
+      <% if current_staff.errors.any? %>
+  		  <%= current_staff.errors.full_messages_for(:name)[0] %>
+  		<% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email,class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.email_field :email,class: 'form-control'%>
+      <% if current_staff.errors.any? %>
+  		  <%= current_staff.errors.full_messages_for(:email)[0] %>
+  		<% end %>
+    </div>
+  </div>
+	<% if current_staff.errors.any? %>
+		<%= current_staff.errors.full_messages_for(:password)[0] %>
+	<% end %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: 'btn btn-success'%>
+    </div>
+  </div>
+<% end %>

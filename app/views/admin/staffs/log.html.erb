@@ -1,0 +1,24 @@
+<h1 class="page-header">活動ログ</h1>
+
+<table class="table table-bordered table-hover table-responsive">
+	<thead>
+		<tr class="success">
+			<th>スタッフID</th>
+			<th>スタッフ名</th>
+			<th>IP</th>
+			<th>アクション</th>
+			<th>活動日時</th>
+		</tr>
+	</thead>
+	<tbody>
+    <% @logs.each do |log| %>
+  		<tr>
+  			<th><%= log.staff_id %></th>
+  			<td><%= log.username %></td>
+  			<td><%= log.ip %></td>
+  			<td><%= log.action %></td>
+				<td><%= log.created_at %></td>
+  		</tr>
+    <% end %>
+	</tbody>
+</table>

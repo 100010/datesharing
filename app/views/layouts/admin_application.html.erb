@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>管理画面</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <%= render 'element/admin/header' %>
+
+
+    <div class="container">
+      <% if logged_in? %>
+        <div class="col-xs-2">
+          <%= render 'element/admin/sidenav' %>
+        </div>
+      <% end %>
+      <div class="col-xs-9 col-xs-offset-1">
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+
+        <% if alert %>
+        	<p class="alert alert-danger"><%= alert %></p>
+      	<% end %>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

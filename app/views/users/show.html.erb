@@ -1,0 +1,22 @@
+<h1>Home#index</h1>
+
+<% unless @plans.nil? #プランが存在していたら%>
+  <p style="text-align: right;">
+    <%= link_to 'プラン作成' , new_plan_path , class: 'btn btn-success' %>
+  </p>
+  <% @plans.each do |plan| %>
+    <div class="col-xs-6 col-md-3">
+      <div class="thumbnail">
+        <%= plan.thubnail %>
+        <div class="caption">
+          <h3><%= link_to plan.title  ,edit_plan_path(plan.id)%></h3>
+          <%= plan.description %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <p class="col-xs-12">
+    <%= link_to 'プラン一覧', user_plans_path(current_user.id),class: 'btn btn-primary' %>
+  </p>
+<% end %>

@@ -1,0 +1,15 @@
+#view上の一般的な語句の日本語化
+ja:
+  gender:
+    men: 男性
+    women: 女性
+  sign_up: 新規登録
+  login: ログイン
+
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."

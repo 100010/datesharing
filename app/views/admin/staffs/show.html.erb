@@ -1,0 +1,38 @@
+<h1 class="page-header">スタッフ詳細</h1>
+
+
+<table class="table">
+
+		<tr>
+			<th>ID</th>
+      <td><%= @staff.id %></td>
+		</tr>
+    <tr>
+      <th>名前</th>
+      <td><%= @staff.name %>
+    </tr>
+</table>
+
+<p class="h3 page-header">ログ</p>
+<table class="table table-bordered table-hover table-responsive">
+	<thead>
+		<tr class="danger">
+			<th>スタッフID</th>
+			<th>スタッフ名</th>
+			<th>IP</th>
+			<th>アクション</th>
+			<th>活動日時</th>
+		</tr>
+	</thead>
+	<tbody>
+    <% @logs.each do |log| %>
+  		<tr>
+  			<th><%= log.staff_id %></th>
+  			<td><%= log.username %></td>
+  			<td><%= log.ip %></td>
+  			<td><%= log.action %></td>
+				<td><%= log.created_at %></td>
+  		</tr>
+    <% end %>
+	</tbody>
+</table>

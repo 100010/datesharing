@@ -1,0 +1,10 @@
+#ユーザモデルの日本語化
+ja:
+  activerecord:
+    attributes:
+      user:
+        username: ユーザ名
+        login: ユーザ名またはメールアドレス
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード

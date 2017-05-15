@@ -1,0 +1,5 @@
+#エラーメッセージの日本語化
+ja:
+  errors:
+    messages:
+      not_saved: '保存できませんでした'
